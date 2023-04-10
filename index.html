@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>Sum Game</h3>
+    <input type="number" id="number1" placeholder="First Number">
+    <input type="number" id="number2" placeholder="Second Number">
+    <button id="button1" onclick="addNum()">Add</button>
+
+    <div id="sum"></div>
+
+    <script>
+
+        function addNum(){
+            let num1 = document.getElementById("number1");
+            let num2 = document.getElementById("number2");
+            let numVal1 = num1.value;
+            let numVal2 = num2.value;
+            num1.value='';
+            num2.value='';
+            let sum = Number(numVal1)+Number(numVal2);
+            
+            let element = document.createElement("div");
+            element.innerText = Number(numVal1)+' plus '+Number(numVal2)+' = '+sum;
+            element.id = new Date().getTime().toString();
+            let clearButton = document.createElement("button");
+            clearButton.innerText = 'Clear';
+            clearButton.style = 'margin-left: 20px';
+            clearButton.onclick = clearSum;
+            clearButton.id = element.id;
+            element.appendChild(clearButton);
+
+            let renderElement = document.getElementById("sum");
+            renderElement.appendChild(element);
+        }
+
+        function clearSum(event){
+            let clearButton = event.target;
+            let deletedButton = clearButton.id;
+            document.getElementById(deletedButton).innerHTML='';
+        }
+
+
+    </script>
+</body>
+</html>
